@@ -11,9 +11,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
-
+/**
+ * 安全配置
+ *
+ * @author lingyuwang
+ * @date 2020-10-04 11:22
+ * @since 1.0.4
+ */
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private DataSource dataSource;
 
@@ -52,4 +59,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login");
     }
+
 }

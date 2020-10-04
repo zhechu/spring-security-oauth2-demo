@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 需要登录 + 授权才能访问到的接口
+ *
+ * @author lingyuwang
+ * @date 2020-10-04 11:30
+ * @since 1.0.4
+ */
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -53,4 +60,5 @@ public class UserController {
         OAuth2AccessToken accessToken = tokenStore.readAccessToken(details.getTokenValue());
         return accessToken.getAdditionalInformation().getOrDefault("userDetails", null);
     }
+
 }

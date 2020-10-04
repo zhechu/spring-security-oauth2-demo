@@ -5,9 +5,17 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * 安全配置
+ *
+ * @author lingyuwang
+ * @date 2020-10-04 11:53
+ * @since 1.0.4
+ */
 @Configuration
 @Order(200)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     /**
      * /路径和/login路径允许访问，其它路径需要身份认证后才能访问
      *
@@ -23,4 +31,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
     }
+
 }

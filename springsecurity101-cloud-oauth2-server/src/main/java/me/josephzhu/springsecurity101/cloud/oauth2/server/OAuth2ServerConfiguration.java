@@ -27,10 +27,13 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 
 @Configuration
-@EnableAuthorizationServer //开启授权服务器
+// 开启授权服务器
+@EnableAuthorizationServer
 public class OAuth2ServerConfiguration extends AuthorizationServerConfigurerAdapter {
+
     @Autowired
     private DataSource dataSource;
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -70,8 +73,7 @@ public class OAuth2ServerConfiguration extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(
-                Arrays.asList(tokenEnhancer(), jwtTokenEnhancer()));
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), jwtTokenEnhancer()));
 
         endpoints.approvalStore(approvalStore())
                 .authorizationCodeServices(authorizationCodeServices())
@@ -139,4 +141,5 @@ public class OAuth2ServerConfiguration extends AuthorizationServerConfigurerAdap
             registry.addViewController("login").setViewName("login");
         }
     }
+
 }
